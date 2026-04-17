@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+  <title>ই-কমার্স বট</title>
+  <!-- Tailwind + কাস্টম স্টাইল -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-black text-white antialiased selection:bg-zinc-800 selection:text-white">
+
+<div class="screen-container max-w-2xl mx-auto bg-black relative">
+  
+  <!-- ========== বট লিস্ট স্ক্রিন ========== -->
+  <div id="botListScreen" class="screen active">
+    <div class="mb-6 mt-2 text-center">
+      <h1 class="text-3xl font-semibold tracking-tight text-white">বট সিলেক্ট করো</h1>
+    </div>
+    <div id="botGrid" class="grid grid-cols-2 gap-3 sm:gap-4 flex-1 content-start"></div>
+    <div class="mt-8 text-center text-xs text-zinc-600 pt-4">
+      <span>&copy; 2025 ই-কমার্স বট</span>
+    </div>
+  </div>
+
+  <!-- ========== চ্যাট স্ক্রিন ========== -->
+  <div id="chatScreen" class="screen !p-0 !overflow-hidden">
+    <div id="chatWallpaper" class="wallpaper-fixed" style="background-image: none;"></div>
+    <div class="chat-content-layer">
+      <div class="chat-header-solid px-4 pt-5">
+        <div class="flex items-center gap-3">
+          <button class="back-arrow-btn" onclick="window.showScreen('botListScreen')">
+            <svg width="28" height="28" viewBox="0 0 60 60"><polyline points="35,15 20,30 35,45" fill="none" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <img id="chatHeaderImg" src="" class="w-9 h-9 rounded-full border border-[#2e2e2e] object-cover">
+          <span id="chatHeaderName" class="font-semibold text-white text-base truncate">Loading...</span>
+        </div>
+      </div>
+
+      <div class="messages-area px-4">
+        <div id="chatMessages" class="space-y-3 flex flex-col"></div>
+      </div>
+
+      <div class="input-area-transparent px-4">
+        <div class="flex items-end gap-2 sm:gap-3">
+          <textarea id="chatInput" rows="1" placeholder="মেসেজ লিখো..." class="w-full px-4 py-3 rounded-3xl placeholder-zinc-500 focus:outline-none focus:ring-1 focus:ring-zinc-600"></textarea>
+          <button id="sendBtn" class="send-btn w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== প্রোডাক্ট লিস্ট স্ক্রিন (ই-কমার্স) ========== -->
+  <div id="productListScreen" class="screen">
+    <div class="flex items-center gap-3 mb-4">
+      <button class="back-arrow-btn" onclick="window.showScreen('botListScreen')">
+        <svg width="28" height="28" viewBox="0 0 60 60"><polyline points="35,15 20,30 35,45" fill="none" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <h2 class="text-xl font-semibold">প্রোডাক্ট লিস্ট</h2>
+    </div>
+    <div id="productGrid" class="grid grid-cols-2 gap-3 sm:gap-4"></div>
+  </div>
+
+  <!-- ========== প্রোডাক্ট ডিটেইল স্ক্রিন ========== -->
+  <div id="productDetailScreen" class="screen">
+    <div class="flex items-center gap-3 mb-4">
+      <button class="back-arrow-btn" onclick="window.showScreen('productListScreen')">
+        <svg width="28" height="28" viewBox="0 0 60 60"><polyline points="35,15 20,30 35,45" fill="none" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <h2 class="text-xl font-semibold">প্রোডাক্ট ডিটেইল</h2>
+    </div>
+    <div id="productDetailContent" class="space-y-4"></div>
+  </div>
+
+</div>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

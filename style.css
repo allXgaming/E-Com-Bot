@@ -1,0 +1,223 @@
+/* css/style.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap');
+
+* {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2e2e2e;
+  border-radius: 20px;
+}
+
+@keyframes messageSlide {
+  0% { opacity: 0; transform: translateY(8px) scale(0.98); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.message-bubble-animated {
+  animation: messageSlide 0.25s cubic-bezier(0.2, 0.9, 0.4, 1) forwards;
+}
+
+.dot-wave span {
+  animation: wave 1.4s infinite ease-in-out both;
+}
+
+.dot-wave span:nth-child(1) { animation-delay: -0.32s; }
+.dot-wave span:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes wave {
+  0%,80%,100% { transform: scale(0.6); opacity: 0.4; background: #a1a1aa; }
+  40% { transform: scale(1); opacity: 1; background: #e4e4e7; }
+}
+
+.screen-container {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.28s ease-out, visibility 0.28s;
+  padding: 1.25rem 1rem 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.screen.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.bot-card {
+  transition: all 0.25s cubic-bezier(0.23, 1, 0.32, 1);
+  animation: cardFadeIn 0.3s ease-out;
+}
+
+@keyframes cardFadeIn {
+  0% { opacity: 0; transform: translateY(6px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.bot-card:hover {
+  transform: scale(1.02) translateY(-3px);
+  background: #1c1c1c;
+  border-color: #3a3a3a;
+}
+
+.send-btn {
+  transition: all 0.15s ease;
+  background-color: #000000;
+  border: 1px solid #333333;
+  min-width: 48px;
+  min-height: 48px;
+}
+
+.send-btn:active {
+  transform: scale(0.92);
+  background: #2a2a2a;
+}
+
+#chatInput {
+  resize: none;
+  min-height: 48px;
+  max-height: 120px;
+  background-color: #000000;
+  border: 1px solid #333333;
+  color: white;
+  font-size: 16px;
+}
+
+.back-arrow-btn {
+  background: transparent;
+  border: none;
+  padding: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.2s;
+  opacity: 0.85;
+  margin: -8px;
+}
+
+.back-arrow-btn:hover {
+  opacity: 1;
+  transform: translateX(-2px);
+}
+
+.back-arrow-btn:active {
+  transform: scale(0.95) translateX(-2px);
+}
+
+.chat-header-solid {
+  background-color: #000000;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #262626;
+  z-index: 5;
+  position: relative;
+}
+
+.wallpaper-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 1;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.chat-content-layer {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.messages-area {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 0;
+}
+
+.input-area-transparent {
+  background: transparent !important;
+  border: none !important;
+  padding: 16px 16px max(12px, env(safe-area-inset-bottom));
+  position: sticky;
+  bottom: 0;
+  z-index: 5;
+}
+
+.bubble-user {
+  background-color: #000000 !important;
+  border: 1px solid #333333;
+  color: #ffffff;
+}
+
+.bubble-assistant {
+  background-color: #000000 !important;
+  border: 1px solid #2a2a2a;
+  color: #ffffff;
+}
+
+.product-card {
+  background: #111111;
+  border: 1px solid #262626;
+  border-radius: 1rem;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.product-card:hover {
+  background: #1a1a1a;
+  border-color: #3a3a3a;
+  transform: translateY(-2px);
+}
+
+.product-image {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 0.75rem;
+  margin-bottom: 0.75rem;
+  background: #1f1f1f;
+}
+
+@media (max-width: 480px) {
+  .screen { padding: 0.75rem 0.75rem 1rem; }
+  .chat-header-solid { padding-left: 12px; padding-right: 12px; }
+  .messages-area { padding-left: 8px; padding-right: 8px; }
+  .input-area-transparent { padding-left: 12px; padding-right: 12px; }
+  .bot-card { padding: 12px; }
+  .bot-card img { width: 64px; height: 64px; }
+}
